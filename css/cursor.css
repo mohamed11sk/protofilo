@@ -1,0 +1,81 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+body.custom-cursor-active .custom-cursor {
+  opacity: 1;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform, left, top, width, height;
+}
+
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cursor-dot-color);
+  mix-blend-mode: var(--cursor-blend-mode);
+  z-index: 2;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color var(--transition-base);
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--cursor-ring-border);
+  z-index: 1;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+}
+
+.custom-cursor.is-hover .cursor-dot {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-cursor.is-hover .cursor-ring {
+  width: 60px;
+  height: 60px;
+  border-color: var(--color-accent);
+  opacity: 0.75;
+}
+
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active select,
+body.custom-cursor-active label {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: auto !important;
+  }
+}

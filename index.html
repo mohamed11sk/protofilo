@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Senior Full-Stack Engineer portfolio — building scalable web applications with modern technologies.">
+  <meta name="theme-color" content="#0F172A">
+  <meta property="og:title" content="Mohamed Elsayed  | Senior Full-Stack Engineer">
+  <meta property="og:description" content="Premium developer portfolio showcasing projects, skills, and experience.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Mohamed Elsayed | Senior Full-Stack Engineer</title>
+</head>
+<body class="loading">
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen" aria-live="polite" aria-busy="true">
+    <div class="loading-screen__content">
+      <div class="loading-screen__logo"><span class="gradient-text">AM</span></div>
+      <div class="loading-screen__bar" id="loading-bar"></div>
+      <p class="loading-screen__text">Crafting experience...</p>
+    </div>
+  </div>
+
+  <div id="cursor-glow" class="cursor-glow" aria-hidden></div>
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+  </div>
+  <canvas id="particles-canvas" class="particles-layer" aria-hidden></canvas>
+
+  <div class="app-wrap">
+    <!-- Header -->
+    <header class="header glass" id="header">
+      <div class="container header__inner">
+        <a href="#home" class="header__logo" aria-label="Home">
+          <span class="gradient-text">Mohamed</span><span class="header__logo-dot">.</span>
+        </a>
+        <nav class="header__nav" aria-label="Main navigation">
+          <ul class="header__links" id="nav-links"></ul>
+        </nav>
+        <div class="header__actions">
+          <button type="button" class="header__theme-btn" id="theme-toggle" aria-pressed="true" aria-label="Switch to light mode" title="Light mode">
+            <i data-lucide="sun"></i>
+          </button>
+          <a href="#contact" class="magnetic-btn magnetic-btn--primary header__cta">Hire Me</a>
+          <button type="button" class="header__menu-btn" id="menu-btn" aria-expanded="false" aria-label="Open menu">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </div>
+      <nav class="header__mobile glass" id="nav-mobile" aria-label="Mobile navigation">
+        <ul id="nav-mobile-links"></ul>
+      </nav>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Hero -->
+      <section class="hero section" id="home">
+        <div class="hero__bg" aria-hidden></div>
+        <div class="container hero__grid">
+          <div class="hero__content hero-animate hero-animate--content">
+            <span class="hero__badge"><span class="hero__badge-dot"></span> Open to opportunities</span>
+            <p class="hero__greeting">Hello, I'm</p>
+            <h1 class="hero__name">Alex <span class="gradient-text">Morgan</span></h1>
+            <div class="hero__role">
+              <span class="hero__role-label">I'm a </span>
+              <span class="hero__role-typed gradient-text" id="typed-role"></span>
+              <span class="hero__cursor" aria-hidden>|</span>
+            </div>
+            <p class="hero__desc">Senior Full-Stack Engineer crafting scalable, accessible web experiences that drive business growth. Passionate about clean architecture and pixel-perfect UI.</p>
+            <div class="hero__cta">
+              <a href="#projects" class="magnetic-btn magnetic-btn--primary">View My Work</a>
+              <a href="#" class="magnetic-btn magnetic-btn--secondary"><i data-lucide="download"></i> Download CV</a>
+            </div>
+            <div class="hero__social">
+              <a href="https://github.com" class="hero__social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i data-lucide="github"></i></a>
+              <a href="https://linkedin.com" class="hero__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+              <a href="https://twitter.com" class="hero__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+              <a href="mailto:hello@alexmorgan.dev" class="hero__social-link" aria-label="Email"><i data-lucide="mail"></i></a>
+            </div>
+          </div>
+          <div class="hero__visual hero-animate hero-animate--visual">
+            <div class="hero__image-ring" aria-hidden></div>
+            <div class="hero__image-wrapper glass">
+              <img src="images/home.png" alt="Portrait of Alex Morgan" width="480" height="480" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80'">
+            </div>
+            <div class="hero__float-card glass">
+              <span class="hero__float-value gradient-text">8+</span>
+              <span class="hero__float-label">Years Exp.</span>
+            </div>
+          </div>
+        </div>
+        <a href="#about" class="hero__scroll" aria-label="Scroll to about"><i data-lucide="arrow-down"></i></a>
+      </section>
+
+      <!-- About -->
+      <section class="about section" id="about">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">About Me</span>
+            <h2 class="section-heading__title">Crafting Digital <span class="gradient-text">Excellence</span></h2>
+            <p class="section-heading__subtitle">Engineer, problem-solver, and lifelong learner focused on impact.</p>
+          </header>
+          <div class="about__grid">
+            <div class="about__image-wrap reveal-left">
+              <div class="about__image glass">
+                <img src="images/about.png" alt="Working at desk" loading="lazy" width="500" height="600" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80'">
+              </div>
+              <div class="about__stats">
+                <div class="glass-card glass about__stat-card"><span class="about__stat-value gradient-text">8+</span><span class="about__stat-label">Years Experience</span></div>
+                <div class="glass-card glass about__stat-card"><span class="about__stat-value gradient-text">60+</span><span class="about__stat-label">Projects Delivered</span></div>
+                <div class="glass-card glass about__stat-card"><span class="about__stat-value gradient-text">12</span><span class="about__stat-label">Teams Led</span></div>
+              </div>
+            </div>
+            <div class="about__content reveal">
+              <p class="about__summary">I craft high-performance digital products that blend engineering excellence with thoughtful design. With 8+ years shipping production systems, I help teams turn ambitious ideas into reliable, scalable software.</p>
+              <h3 class="about__strengths-title">Core Strengths</h3>
+              <ul class="about__strengths stagger-children">
+                <li><i data-lucide="check-circle-2" class="about__check"></i> System design &amp; scalable architecture</li>
+                <li><i data-lucide="check-circle-2" class="about__check"></i> Performance optimization &amp; Core Web Vitals</li>
+                <li><i data-lucide="check-circle-2" class="about__check"></i> Design systems &amp; component libraries</li>
+                <li><i data-lucide="check-circle-2" class="about__check"></i> Mentorship &amp; technical leadership</li>
+                <li><i data-lucide="check-circle-2" class="about__check"></i> CI/CD &amp; cloud-native deployments</li>
+                <li><i data-lucide="check-circle-2" class="about__check"></i> Accessible, inclusive interfaces</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="skills section" id="skills">
+        <div class="skills-ticker reveal" aria-label="Technologies">
+          <div class="container skills-ticker__header">
+            <span class="skills-ticker__badge">Skills</span>
+          </div>
+          <div class="skills-ticker__strip">
+            <div class="skills-ticker__viewport">
+              <div class="skills-ticker__track" id="skills-ticker-track"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Skills</span>
+            <h2 class="section-heading__title">Technical <span class="gradient-text">Arsenal</span></h2>
+            <p class="section-heading__subtitle">Technologies I use to build robust, scalable applications.</p>
+          </header>
+          <div class="skills__grid stagger-children" id="skills-grid"></div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="projects section" id="projects">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Portfolio</span>
+            <h2 class="section-heading__title">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="section-heading__subtitle">Selected work showcasing full-stack expertise and design sensibility.</p>
+          </header>
+          <div class="projects__filters reveal" id="projects-filters" role="tablist" aria-label="Filter projects"></div>
+
+          <div class="projects__slider reveal" id="projects-slider">
+            <button type="button" class="projects__arrow projects__arrow--prev" id="projects-prev" aria-label="Previous projects">
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <div class="projects__viewport" id="projects-viewport">
+              <div class="projects__track" id="projects-track"></div>
+            </div>
+
+            <button type="button" class="projects__arrow projects__arrow--next" id="projects-next" aria-label="Next projects">
+              <i data-lucide="chevron-right"></i>
+            </button>
+
+            <div class="projects__footer">
+              <div class="projects__dots" id="projects-dots" role="tablist" aria-label="Project pages"></div>
+              <p class="projects__pager" id="projects-pager" aria-live="polite"></p>
+              <button type="button" class="projects__autoplay-btn" id="projects-autoplay" aria-pressed="true" aria-label="Pause auto-play">
+                <i data-lucide="pause"></i>
+                <span>Auto</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="experience section" id="experience">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Career</span>
+            <h2 class="section-heading__title">Work <span class="gradient-text">Experience</span></h2>
+            <p class="section-heading__subtitle">A journey of growth, leadership, and shipping impactful products.</p>
+          </header>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="services section" id="services">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Services</span>
+            <h2 class="section-heading__title">What I <span class="gradient-text">Offer</span></h2>
+            <p class="section-heading__subtitle">End-to-end solutions tailored for startups, agencies, and enterprises.</p>
+          </header>
+          <div class="services__grid stagger-children" id="services-grid"></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials section" id="testimonials">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Testimonials</span>
+            <h2 class="section-heading__title">Client <span class="gradient-text">Stories</span></h2>
+            <p class="section-heading__subtitle">What colleagues and clients say about working together.</p>
+          </header>
+          <div class="testimonials__slider glass reveal">
+            <i data-lucide="quote" class="testimonials__quote-icon"></i>
+            <div id="testimonials-slides"></div>
+            <div class="testimonials__nav">
+              <button type="button" id="testimonial-prev" aria-label="Previous testimonial"><i data-lucide="chevron-left"></i></button>
+              <div class="testimonials__dots" id="testimonials-dots" role="tablist"></div>
+              <button type="button" id="testimonial-next" aria-label="Next testimonial"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+      <section class="stats section" id="statistics" aria-label="Statistics">
+        <div class="container">
+          <div class="stats__grid stagger-children" id="stats-grid"></div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="contact section" id="contact">
+        <div class="container">
+          <header class="section-heading section-heading--center reveal">
+            <span class="section-heading__tag">Contact</span>
+            <h2 class="section-heading__title">Let's Work <span class="gradient-text">Together</span></h2>
+            <p class="section-heading__subtitle">Have a project in mind? I'd love to hear about it.</p>
+          </header>
+          <div class="contact__grid">
+            <div class="contact__info reveal">
+              <div class="contact__info-item glass">
+                <i data-lucide="mail"></i>
+                <div><h3>Email</h3><a href="mailto:hello@alexmorgan.dev">hello@alexmorgan.dev</a></div>
+              </div>
+              <div class="contact__info-item glass">
+                <i data-lucide="map-pin"></i>
+                <div><h3>Location</h3><p>San Francisco, CA</p></div>
+              </div>
+              <p class="contact__note">I typically respond within 24 hours. Let's build something remarkable.</p>
+            </div>
+            <form class="contact__form glass reveal" id="contact-form" novalidate>
+              <div class="contact__success" id="contact-success" role="status">
+                <i data-lucide="check-circle"></i>
+                <p>Thank you! Your message has been sent successfully.</p>
+              </div>
+              <div class="contact__row">
+                <div class="contact__field">
+                  <label for="name">Full Name</label>
+                  <input id="name" name="name" type="text" placeholder="John Doe" autocomplete="name">
+                </div>
+                <div class="contact__field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="john@example.com" autocomplete="email">
+                </div>
+              </div>
+              <div class="contact__field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="Project inquiry">
+              </div>
+              <div class="contact__field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+              </div>
+              <button type="submit" class="magnetic-btn magnetic-btn--primary contact__submit">
+                <i data-lucide="send"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo"><span class="gradient-text">Alex Morgan</span></a>
+          <p class="footer__tagline">Building exceptional digital experiences with code and creativity.</p>
+          <div class="footer__social">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" aria-label="Dribbble"><i data-lucide="dribbble"></i></a>
+          </div>
+        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <h3>Navigation</h3>
+          <ul id="footer-nav"></ul>
+        </nav>
+        <div class="footer__contact">
+          <h3>Get in Touch</h3>
+          <a href="mailto:hello@alexmorgan.dev">hello@alexmorgan.dev</a>
+          <p>San Francisco, CA</p>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <p>&copy; <span id="year"></span> Alex Morgan. All rights reserved.</p>
+        <a href="#home" class="footer__top" aria-label="Back to top"><i data-lucide="arrow-up"></i></a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

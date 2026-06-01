@@ -1,0 +1,16 @@
+.glass-card {
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.skills__grid .glass-card,
+.services__grid .glass-card {
+  height: 100%;
+}
+
+.glass-card--hover:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}

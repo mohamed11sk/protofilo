@@ -1,0 +1,105 @@
+.skills-ticker {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.skills-ticker__header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+
+.skills-ticker__badge {
+  display: inline-block;
+  padding: 0.4375rem 1.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-ticker-badge-bg);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-full);
+}
+
+.skills-ticker__strip {
+  background: var(--color-ticker-bg);
+  border-top: 1px solid var(--color-ticker-strip-border);
+  border-bottom: 1px solid var(--color-ticker-strip-border);
+  box-shadow: 0 -1px 0 rgba(99, 102, 241, 0.06), 0 1px 0 rgba(99, 102, 241, 0.06);
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.skills-ticker__viewport {
+  overflow: hidden;
+  padding: 1.75rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.skills-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 50%;
+  animation: skillsTicker 25s linear infinite;
+  will-change: transform;
+}
+
+.skills-ticker__card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 120px;
+  height: 120px;
+  padding: 1rem;
+  background: var(--color-ticker-card-bg);
+  border: 1px solid var(--color-ticker-card-border);
+  border-radius: var(--radius-md);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
++
+
+.skills-ticker__icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.skills-ticker__name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@keyframes skillsTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-ticker__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: max-content;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  .skills-ticker__viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

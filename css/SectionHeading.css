@@ -1,0 +1,41 @@
+.section-heading {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-heading--center {
+  text-align: center;
+}
+
+.section-heading--left {
+  text-align: left;
+}
+
+.section-heading__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-heading__title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.section-heading__subtitle {
+  margin-top: 1rem;
+  max-width: 560px;
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.section-heading--center .section-heading__subtitle {
+  margin-inline: auto;
+}
